@@ -1,0 +1,33 @@
+# Carga de datos
+import pandas as pd
+
+# URL del archivo CSV en GitHub
+url = 'https://raw.githubusercontent.com/alelentini/pye-datos/main/m_1001.csv'
+
+# Lee el archivo CSV y carga los datos en un DataFrame
+df = pd.read_csv(url)
+
+print(df)
+
+
+# Tamaño de la matriz de datos original
+num_filas = df.shape[0]
+num_columnas = df.shape[1]
+
+print("Número de filas:", num_filas)
+print("Número de columnas:", num_columnas)
+
+# Depuración de datos
+columna_3 = 'X_1'
+df[columna_3] = pd.to_numeric(df[columna_3], errors='coerce')
+df = df.dropna(subset=[columna_3])
+
+columna_4 = 'X_2'
+df[columna_4] = pd.to_numeric(df[columna_4], errors='coerce')
+df = df.dropna(subset=[columna_4])
+
+columna_5 = 'X_3'
+df[columna_5] = pd.to_numeric(df[columna_5], errors='coerce')
+df = df.dropna(subset=[columna_5])
+
+print(df)
